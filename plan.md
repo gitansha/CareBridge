@@ -39,22 +39,7 @@ This project aims to build an AI-powered chatbot for hospital departments to ret
 
 ## **Architecture**
 
-User (Streamlit UI)
-        |
-   FastAPI Backend
-        |
-   Elastic Agent Builder (Orchestrator Agent)
-        |
-   ┌────┴─────────────────────────────┐
-   |              |                   |
-Dept Sub-Agent  Drug/ICD Agent   Records Agent
-(Emergency,     (WHO ICD-10 API, (visit history,
- Pharmacy, etc)  Drug Interaction  lab results,
-                 API)              prescriptions)
-        |
-   Elasticsearch Indices
-   (patients, records, appointments,
-    medications, lab_results)
+<img width="601" height="386" alt="image" src="https://github.com/user-attachments/assets/a7785744-57b7-432b-ba61-5b3581952e46" />
 
 
 ## **Future Scope**
