@@ -39,75 +39,23 @@ This project aims to build an AI-powered chatbot for hospital departments to ret
 
 ## **Architecture**
 
-### **Frontend**
-- **Streamlit**:
-  - Chat interface for text and voice interactions.
-  - Analytics dashboard for visual insights.
+User (Streamlit UI)
+        |
+   FastAPI Backend
+        |
+   Elastic Agent Builder (Orchestrator Agent)
+        |
+   ┌────┴─────────────────────────────┐
+   |              |                   |
+Dept Sub-Agent  Drug/ICD Agent   Records Agent
+(Emergency,     (WHO ICD-10 API, (visit history,
+ Pharmacy, etc)  Drug Interaction  lab results,
+                 API)              prescriptions)
+        |
+   Elasticsearch Indices
+   (patients, records, appointments,
+    medications, lab_results)
 
-### **Backend**
-- **Amazon Lex**:
-  - Handles conversational AI with intents for:
-    - Patient search.
-    - Medical record retrieval.
-    - Appointment management.
-    - Drug interaction queries.
-    - ICD code mapping.
-  - Slots for capturing user input (e.g., `PatientID`, `DrugName`, `Date`).
-- **AWS Lambda**:
-  - Executes backend logic for:
-    - Querying ElasticSearch.
-    - Booking appointments.
-    - Fetching drug interactions and ICD codes.
-- **ElasticSearch**:
-  - Stores:
-    - Patient data.
-    - Medical records.
-    - Appointments.
-  - Provides analytics via aggregations.
-- **External APIs**:
-  - WHO ICD-10/11 API.
-  - Drug Interaction API.
-
-### **Voice Support**
-- **Amazon Transcribe**:
-  - Converts voice input into text.
-- **Amazon Polly**:
-  - Converts chatbot responses into speech.
-
----
-
-## **Implementation Timeline (3 Hours)**
-
-### **Hour 1: Backend Setup**
-1. Set up **ElasticSearch** indices:
-   - `patients`, `medical_records`, `appointments`.
-2. Create Lambda functions:
-   - `search_patient`: Queries ElasticSearch for patient data.
-   - `fetch_records`: Retrieves visit history, allergies, and prescriptions.
-   - `book_appointment`: Handles appointment booking.
-   - `check_drug_interaction`: Queries the Drug Interaction API.
-   - `get_icd_code`: Queries the WHO API.
-3. Configure **Amazon Lex** intents and slots.
-
----
-
-### **Hour 2: Frontend and Voice Integration**
-1. Build a **Streamlit** chat interface:
-   - Add text input and microphone button.
-   - Display chatbot responses and analytics.
-2. Integrate **Amazon Transcribe** for voice input.
-3. Integrate **Amazon Polly** for voice output.
-
----
-
-### **Hour 3: Testing and Deployment**
-1. Test chatbot functionality:
-   - Validate intents and slot filling in Amazon Lex.
-   - Test API responses for all features.
-2. Deploy backend on **AWS Lambda** and **API Gateway**.
-3. Deploy frontend on **Streamlit Cloud**.
-
----
 
 ## **Future Scope**
 
@@ -119,27 +67,4 @@ This project aims to build an AI-powered chatbot for hospital departments to ret
 - **Multilingual Support**:
   - Add support for Mandarin and other languages.
 
-### **Scalability**
-- **Deployment Enhancements**:
-  - Migrate to a containerized architecture (e.g., ECS or EKS).
-  - Use **CloudFront** for global content delivery.
-- **AI/ML Integration**:
-  - Deploy models for predictive analytics (e.g., risk scoring).
-
 ---
-
-## **Final Architecture Diagram**
-
-```
-Frontend (Streamlit)
-    |
-    |---> Amazon Lex (Chatbot)
-              |
-              |---> AWS Lambda (Backend Logic)
-                        |
-                        |---> ElasticSearch (Data Storage)
-                        |
-                        |---> Amazon Polly (TTS)
-                        |
-                        |---> Amazon Transcribe (STT)
-```
