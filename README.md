@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CareBridge — Intelligent Hospital Reception Assistant
 
 Agentic chatbot that assists hospital receptionists with patient management, appointment scheduling, medication tracking, and clinical decision support.
@@ -117,3 +118,10 @@ The other team maintains the actual database. This app uses Excel files as a sta
 - **Per-department Excel**: Sheets for `visits`, `medications`, `lab_results`
 
 Sample data includes cross-department patients, medication expiry scenarios, and drug interaction cases for demo purposes.
+=======
+# CareBridge
+CareBridge is an AI-powered chatbot designed for hospitals. It helps staff quickly access patient information, medication details, and care instructions through natural conversations. Built by Lambda Legends for healthcare innovation.
+
+
+ppt link: https://docs.google.com/presentation/d/1OOrAqekoJ8i_vQMJ7JHYvpB7fNGxwozq/edit?slide=id.p1#slide=id.p1
+>>>>>>> origin/main
